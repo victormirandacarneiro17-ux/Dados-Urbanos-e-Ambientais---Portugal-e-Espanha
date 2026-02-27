@@ -1,0 +1,84 @@
+{
+    "apis": [
+        {
+            "nome": "poi_porto",
+            "titulo": "Pontos de Interesse - Porto",
+            "url": "https://api.iotbi.tech/api/v1/porto/PointOfInterest?appKey=estagio",
+            "tipo": "iotbi",
+            "ativo": true,
+            "cor_marcador": "blue",
+            "campos": {
+                "local":       { "origem": "name" },
+                "categoria":   { "origem": "category" },
+                "descricao":   { "origem": "description" }
+            }
+        },
+        {
+            "nome": "poi_portodigital",
+            "titulo": "Pontos de Interesse - Porto Digital",
+            "url": "https://api.iotbi.tech/api/v1/portodigital/PointOfInterest?appKey=estagio",
+            "tipo": "iotbi",
+            "ativo": true,
+            "cor_marcador": "darkblue",
+            "campos": {
+                "local":     { "origem": "name" },
+                "categoria": { "origem": "category" },
+                "descricao": { "origem": "description" }
+            }
+        },
+        {
+            "nome": "poi_madrid",
+            "titulo": "Pontos de Interesse - Madrid",
+            "url": "https://api.iotbi.tech/api/v1/madrid/PointOfInterest?appKey=estagio",
+            "tipo": "iotbi",
+            "ativo": true,
+            "cor_marcador": "red",
+            "campos": {
+                "local":     { "origem": "name" },
+                "categoria": { "origem": "category" },
+                "descricao": { "origem": "description" }
+            }
+        },
+        {
+            "nome": "qualidade_ar",
+            "titulo": "Qualidade do Ar - Maia",
+            "url": "https://api.iotbi.tech/api/v1/stellio_owm_ld/AirQualityObserved?appKey=estagio",
+            "tipo": "iotbi",
+            "ativo": true,
+            "campos": {
+                "local":       { "origem": "streetAddress" },
+                "temperatura": { "origem": "temperature", "unidade": "°C", "regras_cor": [{"max": 10, "cor": "lightblue"}, {"max": 20, "cor": "green"}, {"max": 30, "cor": "orange"}, {"max": 40, "cor": "red"}] },
+                "humidade":    { "origem": "relativeHumidity", "unidade": "%" },
+                "vento":       { "origem": "windSpeed",        "unidade": "km/h" },
+                "co":          { "origem": "co",               "unidade": "ppb" },
+                "no2":         { "origem": "no2",              "unidade": "ppb" },
+                "so2":         { "origem": "so2",              "unidade": "ppb" },
+                "aqi":         { "origem": "airQualityIndex" },
+                "nivel_ar":    { "origem": "airQualityLevel" }
+            }
+        },
+        {
+            "nome": "veiculos_porto",
+            "titulo": "Veículos - Porto Digital",
+            "url": "https://api.iotbi.tech/api/v1/portodigital/Vehicle?appKey=estagio",
+            "tipo": "iotbi",
+            "ativo": true,
+            "cor_marcador": "purple",
+            "campos": {
+                "local":      { "origem": "description" },
+                "tipo":       { "origem": "vehicleType" },
+                "estado":     { "origem": "serviceStatus" }
+            }
+        }
+    ],
+
+    "pastas": { "dados": "Dados" },
+    "ficheiros": { "excel": "dados_completos.xlsx" },
+    "csv": { "separador": ";", "encoding": "utf-8-sig" },
+    "mapa": { "centro_lat": 41.15, "centro_lon": -8.61, "zoom_inicial": 12 },
+    "interface": {
+        "titulo": "Dados Urbanos e Ambientais - Portugal e Espanha",
+        "mostrar_legenda": true,
+        "mostrar_estatisticas": true
+    }
+}

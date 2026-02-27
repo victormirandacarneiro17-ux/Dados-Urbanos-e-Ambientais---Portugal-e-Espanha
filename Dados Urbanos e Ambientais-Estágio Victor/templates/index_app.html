@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ titulo }}</title>
+    <meta charset="utf-8">
+</head>
+
+<body bgcolor="#ffffff" text="#000000">
+
+    <center>
+        <font face="Arial" size="4" color="#000080">
+            <marquee width="80%"> {{ titulo }}  DADOS EM TEMPO REAL </marquee>
+        </font>
+        <hr color="#000080" width="100%">
+    </center>
+
+    <table width="100%" height="90%" border="0" cellpadding="5" cellspacing="0">
+        <tr valign="top">
+
+
+            <td width="260" bgcolor="#f0f0f0">
+                <table width="100%" border="1" bordercolor="#000080" cellpadding="6">
+
+
+                    <tr bgcolor="#000080">
+                        <td align="center">
+                            <font face="Arial" size="2" color="white"><b> FONTES DE DADOS </b></font>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            <form method="POST">
+                                <table width="100%" border="0" cellpadding="4">
+                                    {% for api in apis %}
+                                    <tr bgcolor="#ffffff">
+                                        <td>
+                                            <font face="Arial" size="2">
+                                                <input type="checkbox" name="mostrar_{{ api.nome }}"
+                                                       {% if apis_visiveis[api.nome] %}checked{% endif %}>
+                                                <font color="#000000">{{ api.titulo }}</font>
+                                                <br>
+                                                <font color="#000000" size="1">
+                                                    [ {{ contadores[api.nome] }} / {{ totais[api.nome] }} pontos ]
+                                                </font>
+                                            </font>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+                                    <tr>
+                                        <td align="center">
+                                            <br>
+                                            <input type="submit" value=" ATUALIZAR MAPA "
+                                                   style="background:#000080; color:white; font-weight:bold;
+                                                          font-family:Arial; font-size:12px;
+                                                          border:2px outset #ffffff; padding:6px 12px; cursor:pointer;">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </td>
+                    </tr>
+
+                    <tr bgcolor="#000080">
+                        <td align="center">
+                            <font face="Arial" size="2" color="white"><b> LEGENDA </b></font>
+                        </td>
+                    </tr>
+
+                    <tr bgcolor="#f8f8f8">
+                        <td style="padding:8px;">
+                            <table border="0" cellpadding="3" cellspacing="0" width="100%" style="font-family:Arial; font-size:11px;">
+                                <tr>
+                                    <td width="20"><span style="background:#3388ff; display:inline-block; width:16px; height:16px; border:1px solid #aaa;"></span></td>
+                                    <td>Pontos de Interesse - Porto</td>
+                                </tr>
+                                <tr>
+                                    <td><span style="background:darkblue; display:inline-block; width:16px; height:16px; border:1px solid #aaa;"></span></td>
+                                    <td>Pontos de Interesse - Porto Digital</td>
+                                </tr>
+                                <tr>
+                                    <td><span style="background:red; display:inline-block; width:16px; height:16px; border:1px solid #aaa;"></span></td>
+                                    <td>Pontos de Interesse - Madrid</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <details>
+                                            <summary style="cursor:pointer; font-family:Arial; font-size:11px; list-style:none; display:flex; align-items:center; gap:5px;">
+                                                <span style="background:#aaaaaa; display:inline-block; width:16px; height:16px; border:1px solid #aaa;"></span>
+                                                Qualidade do Ar - Maia ▾
+                                            </summary>
+                                            <table border="0" cellpadding="3" cellspacing="0" style="margin-left:8px; margin-top:3px; font-family:Arial; font-size:11px;">
+                                                <tr>
+                                                    <td><span style="background:lightblue; display:inline-block; width:16px; height:16px; border:1px solid #aaa;"></span></td>
+                                                    <td>até 10°C</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span style="background:green; display:inline-block; width:16px; height:16px; border:1px solid #aaa;"></span></td>
+                                                    <td>10 a 20°C</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span style="background:orange; display:inline-block; width:16px; height:16px; border:1px solid #aaa;"></span></td>
+                                                    <td>20 a 30°C</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span style="background:red; display:inline-block; width:16px; height:16px; border:1px solid #aaa;"></span></td>
+                                                    <td>acima de 30°C</td>
+                                                </tr>
+                                            </table>
+                                        </details>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span style="background:purple; display:inline-block; width:16px; height:16px; border:1px solid #aaa;"></span></td>
+                                    <td>Veículos - Porto</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <tr bgcolor="#ffffff">
+                        <td align="center">
+                            <font face="Arial" size="2" color="#000000">
+                                <b>TOTAL: {{ total_pontos }} PONTOS</b><br>
+                            </font>
+                        </td>
+                    </tr>
+
+                    <tr bgcolor="#ffffff">
+                        <td align="center">
+                            <a href="/sobre">
+                                <input type="button" value=" SOBRE O PROJETO "
+                                       style="background:#ffffff; color:#000080; font-weight:bold;
+                                              font-family:Arial; font-size:12px;
+                                              border:2px outset #aaaaaa; padding:6px 12px; cursor:pointer;">
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="center">
+                            <font face="Arial" size="1" color="#000000">
+                                Estágio-ISCAP 2026<br>
+                            </font>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+
+            <td>
+                {{ mapa_html | safe }}
+            </td>
+
+        </tr>
+    </table>
+
+</body>
+</html>
